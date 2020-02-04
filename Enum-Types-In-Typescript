@@ -1,0 +1,27 @@
+Types of enums
+ 
+A) Numeric enum
+It is commonly used in all languages.
+Initial value starts from 0 if we do not set any value.
+Takes only numeric values.
+enum keyword is used to declare the numeric type enum.
+We can assign any value as per our requirements.
+If our function returns any numeric value then we can use this function to initialize the constant.
+Consider that in the below rainbowColors is enum & we have not initialized any constants, so it will starts with 0 value and the rest of the constants have auto increamemtal values.
+
+Example:
+enum rainbowColors {  
+    Red,  
+    Orange,  
+    Yellow,  
+    Green,  
+    Blue,  
+    Indigo,  
+    Violet,  
+}  
+console.log("color & index value is as follows");  
+for (let item in rainbowColors) {  
+    if (isNaN(Number(item))) {  
+        console.log(item + " : " + < rainbowColors > rainbowColors[item]);  
+    }  
+} 
