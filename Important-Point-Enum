@@ -1,0 +1,127 @@
+Point A - Function & interface using enum
+ 
+Consider the below example, clothSize is enum which contains some constants. IClothSize is an interface which contains two properties, key & value, having string & number type respectively.
+ 
+Function is taking enum as a parameter & will print the data on the console.
+ 
+Example
+enum clothSize {  
+    small,  
+    medium,  
+    large  
+}  
+interface IClothSize {  
+    key: string,  
+        value: number  
+}  
+  
+function getClothSize(size: clothSize): IClothSize {  
+    switch (size) {  
+        case clothSize.small:  
+            return {  
+                key: clothSize[clothSize.small], value: 10  
+            };  
+        case clothSize.medium:  
+            return {  
+                key: clothSize[clothSize.medium], value: 20  
+            };  
+        case clothSize.large:  
+            return {  
+                key: clothSize[clothSize.large], value: 30  
+            };  
+    }  
+}  
+console.log("cloth is " + getClothSize(clothSize.small).key + " & value is " + getClothSize(clothSize.small).value);  
+console.log("cloth is " + getClothSize(clothSize.medium).key + " & value is " + getClothSize(clothSize.medium).value);   
+Output
+ 
+cloth is small & value is 10
+cloth is medium & value is 20
+ 
+Point B - const enum
+Typescript allows us to declare const enum.
+const keyword is used.
+It has a inlined values.
+We can access enum using enum['ConstantName']
+Example
+const enum myColor {  
+    Red = 10,  
+        White = Red * 4,  
+        Blue = White + 10,  
+        Yellow,  
+}  
+console.log(myColor.Red)  
+console.log(myColor.White)  
+console.log(myColor.Blue)  
+console.log(myColor['Yellow'])   
+Output
+ 
+10
+40
+50
+51
+ 
+We will not be able to access enum using index in const enum like myColor[0], it will give us an error.
+ 
+Point C
+ 
+ES6 allows us to use map enum keys.
+ 
+Example
+enum classes {  
+    I,  
+    II,  
+    III,  
+    IV,  
+    V  
+}  
+const ClassNames = new Map < number,  
+    string > ([  
+        [classes.I, '100'],  
+        [classes.II, '200'],  
+        [classes.III, '300'],  
+    ]);  
+console.log(ClassNames);   
+Output
+ 
+Map(3) {0 => "100", 1 => "200", 2 => "300"}
+ 
+We will modify the above example, we can use this into a classes as below.
+ 
+Note
+User can modify the code as per their requirement.
+ 
+Example
+enum classes {  
+    I,  
+    II,  
+    III,  
+    IV,  
+    V  
+}  
+const ClassNames = new Map < number,  
+    string > ([  
+        [classes.I, '100'],  
+        [classes.II, '200'],  
+        [classes.III, '300'],  
+    ]);  
+class AllStandards {  
+    public allNames: object;  
+    constructor() {  
+        this.allNames = ClassNames;  
+    }  
+}  
+let obj: AllStandards = new AllStandards();  
+console.log(obj.allNames);   
+Output
+ 
+Map(3) {0 => "100", 1 => "200", 2 => "300"}
+ 
+Point D - export enum
+typescript allows us to export the enum.
+export keyword is used before the enum.
+import is used to import that enum file.
+We can declare the enum like this: 
+export enum sportActivities {Football, Cricket,Badminton, Tennis}  
+To import the enum in .ts,  i.e.; typescript file looks like this: 
+import {sportActivities} from '../enums' 
