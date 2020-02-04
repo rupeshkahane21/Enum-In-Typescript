@@ -25,3 +25,110 @@ for (let item in rainbowColors) {
         console.log(item + " : " + < rainbowColors > rainbowColors[item]);  
     }  
 } 
+
+Output
+ 
+color & index value is as follows:
+ 
+Red : 0
+Orange : 1
+Yellow : 2
+Green : 3
+Blue : 4
+Indigo : 5
+Violet : 6
+ 
+Consider the below example, rainbowColors is enum & the second element is initialized with value 1000. So it will be auto incremental to the  remaining constants. It will print on the console.
+ 
+Example 
+enum rainbowColors {  
+    Red,  
+    Orange = 1000,  
+    Yellow,  
+    Green,  
+    Blue,  
+    Indigo,  
+    Violet,  
+}  
+console.log("color & index value is as follows");  
+for (let item in rainbowColors) {  
+    if (isNaN(Number(item))) {  
+        console.log(item + " : " + < rainbowColors > rainbowColors[item]);  
+    }  
+}   
+Output
+ 
+color & index value is as follows,
+ 
+Red : 0
+Orange : 1000
+Yellow : 1001
+Green : 1002
+Blue : 1003
+Indigo : 1004
+Violet : 1005
+ 
+Using function in enum
+ 
+Consider the below example. We can use function in enum if we are returning the value from the function. It is used when the user needs to do any calculation. Suppose we need to calculate the total minutes like 1 hour = 60 minute, 2 hour = 120 minute, then it will create one function which will do a calcuation & return values to enum constant:
+ 
+Example
+function Totalminute(hr: number): any{  
+return 60 * hr;  
+}  
+enum hours  
+{  
+One = Totalminute(1) ,  
+Two = Totalminute(2),  
+Three = Totalminute(4),  
+}  
+console.log(hours.One);  
+console.log(hours.Two);  
+console.log(hours.Three);  
+Output
+ 
+60
+120
+240
+ 
+B) String enum
+ 
+It is same as the numeric enums,  we are just passing string values/literals to our enum constant. enum keyword is used to declare the enums.
+ 
+Consider the below example, our vehicle is taking different kinds of turns, and we will define the enum as:
+ 
+Example
+enum vehicleTurn {  
+    Left = "Left",  
+        Right = "Right",  
+        UTurn = "UTurn"  
+}  
+console.log(vehicleTurn.Left);  
+console.log(vehicleTurn.Right);  
+console.log(vehicleTurn.UTurn);  
+}   
+Output
+ 
+Left
+Right
+UTurn
+ 
+C) Heterogeneous enums
+ 
+Typescript allows us to create a mixed type of enums.
+ 
+This means we can assign numeric & string type values to enum.
+ 
+Consider the below example, circleInfo has heterogeneous enum values.
+ 
+Example
+enum circleInfo {  
+    Area = "area of circle",  
+        Pie = 3.112,  
+        Radius = 20  
+}  
+let result = circleInfo.Pie * circleInfo.Radius * circleInfo.Radius;  
+console.log(circleInfo.Area + " is :" + result);   
+Output
+ 
+area of circle is :1244.8
